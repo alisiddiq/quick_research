@@ -2,35 +2,42 @@
 
 This repo allows the user to quickly get past daily price movements of a particular stock, along with a summary of company news (if any) for days that had unusually large volumes
 
-## Installation
 
-Download from http://example.com/FIXME.
+## Usage from REPL
+1. Load the repl
+2. Then load the namespace in the repl
 
-## Usage
+ ```Clojure
+ (use 'quick-research.price_news)
+ (in-ns 'quick-research.price_news)
+ ```
+ 
+3. Then call the function, specifying the company code, number of days for which prices should be checked, and the threshold level of price change for which results will be returned
+ ```Clojure
+ (quick-research "BP" 100 4) 
+ ;Will return any dates at which price of BP moved by more than +/- 4 percent, in the past 100 days
+ ```
+returns
+```
+[{:date "2016-11-01",
+  :price-change -4.47591482323754,
+  :news
+  [("Nils Andersen to join the BP Board"
+    "http://www.investegate.co.uk/bp-plc--bp--/rns/nils-andersen-to-join-the-bp-board/201611010705039265N/")
+   ("Press release: BP third quarter 2016 results"
+    "http://www.investegate.co.uk/bp-plc--bp--/rns/press-release--bp-third-quarter-2016-results/201611010700089361N/")
+   ("3Q16 Part 1 of 1"
+    "http://www.investegate.co.uk/bp-plc--bp--/rns/3q16-part-1-of-1/201611010700079263N/")]}
+ {:date "2017-02-07",
+  :price-change -4.081418529010595,
+  :news
+  [("Press release: BP full year and 4Q 2016 results"
+    "http://www.investegate.co.uk/bp-plc--bp--/rns/press-release--bp-full-year-and-4q-2016-results/201702070700081777W/")
+   ("4Q16 Part 1 of 1"
+    "http://www.investegate.co.uk/bp-plc--bp--/rns/4q16-part-1-of-1/201702070700071699W/")]}]
+```
 
-FIXME: explanation
-
-    $ java -jar quick_research-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+## Usage from JAR file
+```Java
+java -jar quick_research.jar <COMPANY CODE> <TIME IN DAYS> <PRICE CHANGE THRESHOLD>
+```
