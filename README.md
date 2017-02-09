@@ -2,7 +2,7 @@
 
 This repo allows the user to quickly get past daily price movements of a particular stock, along with a summary of company news (if any) for days that had large price movement.
 
-It only shows RNS for UK list stocks
+It only shows RNS for UK listed stocks
 
 ## Usage from REPL
 1. Load the repl
