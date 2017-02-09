@@ -1,6 +1,6 @@
 # quick_research
 
-This repo allows the user to quickly get past daily price movements of a particular stock, along with a summary of company news (if any) for days that had unusually large volumes
+This repo allows the user to quickly get past daily price movements of a particular stock, along with a summary of company news (if any) for days that had large price movement.
 
 
 ## Usage from REPL
