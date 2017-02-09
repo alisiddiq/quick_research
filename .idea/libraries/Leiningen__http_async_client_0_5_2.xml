@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: http.async.client:0.5.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/http/async/client/http.async.client/0.5.2/http.async.client-0.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

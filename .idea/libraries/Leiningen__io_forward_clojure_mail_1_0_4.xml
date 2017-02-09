@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: io.forward/clojure-mail:1.0.4">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/forward/clojure-mail/1.0.4/clojure-mail-1.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

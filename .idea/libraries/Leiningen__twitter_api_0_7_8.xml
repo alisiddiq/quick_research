@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: twitter-api:0.7.8">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/twitter-api/twitter-api/0.7.8/twitter-api-0.7.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

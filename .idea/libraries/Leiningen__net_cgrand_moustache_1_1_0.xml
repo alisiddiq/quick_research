@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: net.cgrand/moustache:1.1.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/cgrand/moustache/1.1.0/moustache-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
