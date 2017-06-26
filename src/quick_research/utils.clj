@@ -27,14 +27,14 @@
     (html/html-resource inputstream)))
 
 (defn http-request
-  [method url & {:keys [form-params query-params content-type cookies headers]}]
+  [method url & {:keys [form-params query-params content-type cookie-store headers]}]
   (client/request {:url          url
                    :method       method
                    :form-params  form-params
                    :query-params query-params
                    :content-type content-type
                    :as           content-type
-                   :cookie-store cookies
+                   :cookie-store cookie-store
                    :headers      headers}
                   )
   )
