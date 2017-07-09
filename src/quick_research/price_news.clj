@@ -26,7 +26,7 @@
   "Get prices from Yahoo, start and end dates should be in the format yyyy-MM-dd, if quotes are for lse, supply appropriate flag"
   [code start end & {:keys [lse? interval retry-attempts sleep-time]}]
   (let [code (str/replace code ".L" "")
-        lse? (or lse? true)
+        lse? (if (nil? lse?) true lse?)
         interval (or interval "1d")
         retry-attempts (or retry-attempts 10)
         sleep-time (or sleep-time 10)
@@ -51,17 +51,19 @@
     ))
 
 (defn get-perc-changes
-  [code since]
+  [code since & lse?]
   (let [now-str (f/unparse (f/formatter "yyyy-MM-dd") (t/now))
-        past-price-data (utils/tc #(rest (get-yahoo-prices code since now-str :lse? true)))
+        lse? (if (nil? lse?) true lse?)
+        past-price-data (utils/tc #(rest (get-yahoo-prices code since now-str :lse? lse?)))
         csv-data (if-not (nil? past-price-data)
                    (mapv #(read-string (nth % 4)) (vec past-price-data))
                    nil)
-        csv-data-old (vec (rest csv-data))
-        csv-data-new (vec (butlast csv-data))
+        csv-data-new (vec (rest csv-data))
+        csv-data-old (vec (butlast csv-data))
         perc-change (mapv utils/perc-change csv-data-new csv-data-old)
-        map-fn (fn [price-entry change] [(keyword (first price-entry)) change])
-        perc-change-date (into (sorted-map) (mapv map-fn past-price-data perc-change))
+        map-fn (fn [date-entry change] [(keyword date-entry) change])
+        out-dates (mapv #(first %) (rest past-price-data))
+        perc-change-date (into (sorted-map) (mapv map-fn out-dates perc-change))
         ]
     perc-change-date
     ))
@@ -71,7 +73,8 @@
   (let [date-str (str/replace date #"-" "")
         code (str/lower-case code)
         hostname "http://www.investegate.co.uk"
-        full-news-list (utils/fetch-url (str hostname "/Index.aspx?&arch=1&limit=-1&date=" date-str))
+        url (str hostname "/Index.aspx?&arch=1&limit=-1&date=" date-str)
+        full-news-list (html/html-snippet (:body (utils/http-request :get url)))
         news-links (map #(-> % :attrs :href) (html/select full-news-list [:a.annmt]))
         full-links (map #(str hostname %) news-links)
         summaries (html/select full-news-list [:a.annmt html/text-node])
@@ -95,8 +98,9 @@
   )
 
 (defn quick-research
-  [code since threshold]
-  (let [past-prices (get-perc-changes code since)
+  [code since threshold & lse?]
+  (let [lse? (if (nil? lse?) true lse?)
+        past-prices (get-perc-changes code since lse?)
         filtered-prices (filter #(> (Math/abs (val %)) threshold) past-prices)
         with-news (vec (pmap #(add-news code %) filtered-prices))
         ]

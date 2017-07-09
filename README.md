@@ -20,20 +20,20 @@ It only shows RNS for UK listed stocks
  ```
 returns
 ```
-[{:date "2016-06-28", :price-change -4.790484127791447, :news []}
- {:date "2016-09-28",
-  :price-change -4.157427937915743,
-  :news [("BP p.l.c. publishes provisional dividend dates"
-          "http://www.investegate.co.uk/bp-plc--bp--/rns/bp-p-l-c--publishes-provisional-dividend-dates/201609281426161052L/")]}
- {:date "2016-10-31",
-  :price-change 4.68564539817714,
-  :news [("Total Voting Rights"
-          "http://www.investegate.co.uk/bp-plc--bp--/rns/total-voting-rights/201610311602469036N/")]}
- {:date "2017-02-06", :price-change 4.255082420628972, :news []}
- {:date "2017-04-13",
-  :price-change 4.08749442217197,
-  :news [("BP plc Notice of Annual General Meeting 2017"
-          "http://www.investegate.co.uk/bp-plc--bp--/rns/bp-plc-notice-of-annual-general-meeting-2017/201704130927044455C/")]}]
+[{:date "2016-06-29", :price-change 5.0315182089795485, :news []}
+ {:date "2016-09-29", :price-change 4.3377674956622325, :news []}
+ {:date "2016-11-01",
+  :price-change -4.47591967394866,
+  :news [("Nils Andersen to join the BP Board"
+          "http://www.investegate.co.uk/bp-plc--bp--/rns/nils-andersen-to-join-the-bp-board/201611010705039265N/")
+         ("Press release: BP third quarter 2016 results"
+          "http://www.investegate.co.uk/bp-plc--bp--/rns/press-release--bp-third-quarter-2016-results/201611010700089361N/")
+         ("3Q16 Part 1 of 1" "http://www.investegate.co.uk/bp-plc--bp--/rns/3q16-part-1-of-1/201611010700079263N/")]}
+ {:date "2017-02-07",
+  :price-change -4.081414854636399,
+  :news [("Press release: BP full year and 4Q 2016 results"
+          "http://www.investegate.co.uk/bp-plc--bp--/rns/press-release--bp-full-year-and-4q-2016-results/201702070700081777W/")
+         ("4Q16 Part 1 of 1" "http://www.investegate.co.uk/bp-plc--bp--/rns/4q16-part-1-of-1/201702070700071699W/")]}]
 
 ```
 

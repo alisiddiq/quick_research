@@ -18,14 +18,6 @@
       (do (println "WARN: " (.getMessage e))
           nil))))
 
-(defn fetch-url [url]
-  (with-open [inputstream (-> (java.net.URL. url)
-                              .openConnection
-                              (doto (.setRequestProperty "User-Agent"
-                                                         "Mozilla/5.0 ..."))
-                              .getContent)]
-    (html/html-resource inputstream)))
-
 (defn http-request
   [method url & {:keys [form-params query-params content-type cookie-store headers]}]
   (client/request {:url          url
